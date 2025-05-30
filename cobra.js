@@ -40,6 +40,10 @@ function generateRandomMultipleOf20() {
 
   return result;
 }
+
+function outputPontos(){
+    document.getElementById("output").innerHTML = pontos;
+}
 //-----------
 
 // Declaração de variáveis e constantes
@@ -94,10 +98,10 @@ function iniciar() {
 
     carregarImagens();
     criarCobra();
-    localizarMaca();
     localizarBomba();
+    localizarMaca();
+    if((maca_x==bomba_x)&&(maca_y==bomba_y)){maca_x+=20; bomba_x-=20;}
     setTimeout("cicloDeJogo()", ATRASO);
-    grade();
 }
 
 function carregarImagens() {
@@ -117,6 +121,7 @@ function carregarImagens() {
 
 function criarCobra() {
     pontos = 3;
+    outputPontos();
 	var i = generateRandomMultipleOf20();
     for (var z = 0; z < pontos; z++) {
         x[z] = i - z * TAMANHO_PONTO;
@@ -125,10 +130,10 @@ function criarCobra() {
 }
 
 function localizarMaca() {
-    let r = Math.floor((Math.random() * ALEATORIO_MAXIMO)-bomba_x);
+    let r = Math.floor((Math.random() * ALEATORIO_MAXIMO));
     maca_x = r * TAMANHO_PONTO;
 
-    r = Math.floor((Math.random() * ALEATORIO_MAXIMO)-bomba_y);
+    r = Math.floor((Math.random() * ALEATORIO_MAXIMO));
     maca_y = r * TAMANHO_PONTO;
 }
 
@@ -142,6 +147,7 @@ function localizarBomba(){
 
 function cicloDeJogo() {
     if (noJogo) {
+        outputPontos();
         verificarMaca();
         verificarColisao();
         mover();
@@ -160,7 +166,7 @@ function verificarMaca() {
 function verificarBomba() {
     if ((x[0] == bomba_x) && (y[0] == bomba_y)) {
         pontos--;
-        localizarMaca();
+        localizarBomba();
     }
 } 
 
@@ -212,10 +218,9 @@ function mover() {
 }    
 
 function fazerDesenho() {
-    ctx.fillStyle = "#3E3E4D";
-    ctx.clearRect(0, 0, C_LARGURA, C_ALTURA);
-	ctx.fillRect(0, 0, C_LARGURA, C_ALTURA);
-	
+    ctx.fillStyle = "#050206";
+    ctx.fillRect(0,0,C_LARGURA,C_ALTURA);
+    
     if (noJogo) {
         ctx.drawImage(maca, maca_x, maca_y);
         ctx.drawImage(bomba,bomba_x,bomba_y);
