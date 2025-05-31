@@ -50,33 +50,43 @@ function outputPontos(){
 function outputDebug(x){
     document.getElementById("debug").innerHTML = x;
 }
+function rb(b){
+    let r = Math.floor((Math.random() * ALEATORIO_MAXIMO));
+    b = r*TAMANHO_PONTO;
+    return b;
+};
 //-----------
 
 // Declaração de variáveis e constantes
 const bomba = {
     b1:0,b2:0,b3:0,b4:0,b5:0,b6:0,b7:0,b8:0,b9:0,b10:0
 };
-
 const bomba_x = {
     b1:0,b2:0,b3:0,b4:0,b5:0,b6:0,b7:0,b8:0,b9:0,b10:0
 }
-
 const bomba_y = {
     b1:0,b2:0,b3:0,b4:0,b5:0,b6:0,b7:0,b8:0,b9:0,b10:0
 }
+
+const comida = {
+    c1:0,c2:0,c3:0,c4:0,c5:0,c6:0,c7:0,c8:0,c9:0,c10:0
+}
+const comida_x = {
+    c1:0,c2:0,c3:0,c4:0,c5:0,c6:0,c7:0,c8:0,c9:0,c10:0
+}
+const comida_y = {
+    c1:0,c2:0,c3:0,c4:0,c5:0,c6:0,c7:0,c8:0,c9:0,c10:0
+}
+
 var runTime;
 
 var tela;
 var ctx;
 
 var cabeca;
-var maca;
 var bola;
 
 var pontos;
-var maca_x;
-var maca_y;
-
 
 var paraEsquerda = false;
 var paraDireita = true;
@@ -126,9 +136,6 @@ function carregarImagens() {
     
     bola = new Image();
     bola.src = "ponto.png"; 
-    
-    maca = new Image();
-    maca.src = "maca.png";
 
     bomba.b1 = new Image();
     bomba.b1.src = "obstaculo.png";
@@ -159,6 +166,36 @@ function carregarImagens() {
     
     bomba.b10 = new Image();
     bomba.b10.src = "obstaculo.png";
+
+    comida.c1 = new Image();
+    comida.c1.src = "maca.png";
+    
+    comida.c2 = new Image();
+    comida.c2.src = "maca.png";
+    
+    comida.c3 = new Image();
+    comida.c3.src = "maca.png";
+    
+    comida.c4 = new Image();
+    comida.c4.src = "maca.png";
+    
+    comida.c5 = new Image();
+    comida.c5.src = "maca.png";
+    
+    comida.c6 = new Image();
+    comida.c6.src = "maca.png";
+    
+    comida.c7 = new Image();
+    comida.c7.src = "maca.png";
+    
+    comida.c8 = new Image();
+    comida.c8.src = "maca.png";
+    
+    comida.c9 = new Image();
+    comida.c9.src = "maca.png";
+    
+    comida.c10 = new Image();
+    comida.c10.src = "maca.png";
 }
 
 function criarCobra() {
@@ -172,42 +209,52 @@ function criarCobra() {
 }
 
 function localizarMaca() {
-    let r = Math.floor((Math.random() * ALEATORIO_MAXIMO));
-    maca_x = r * TAMANHO_PONTO;
+    comida_x.c1 = rb(comida_x.c1);
+    comida_x.c2 = rb(comida_x.c2);
+    comida_x.c3 = rb(comida_x.c3);
+    comida_x.c4 = rb(comida_x.c4);
+    comida_x.c5 = rb(comida_x.c5);
+    comida_x.c6 = rb(comida_x.c6);
+    comida_x.c8 = rb(comida_x.c8);
+    comida_x.c9 = rb(comida_x.c9);
+    comida_x.c10 = rb(comida_x.c10);
 
-    r = Math.floor((Math.random() * ALEATORIO_MAXIMO));
-    maca_y = r * TAMANHO_PONTO;
+    comida_y.c1 = rb(comida_y.c1);
+    comida_y.c2 = rb(comida_y.c2);
+    comida_y.c3 = rb(comida_y.c3);
+    comida_y.c4 = rb(comida_y.c4);
+    comida_y.c5 = rb(comida_y.c5);
+    comida_y.c6 = rb(comida_y.c6);
+    comida_y.c7 = rb(comida_y.c7);
+    comida_y.c8 = rb(comida_y.c8);
+    comida_y.c9 = rb(comida_y.c9);
+    comida_y.c10 = rb(comida_y.c10);
+
 }
 
-function rb(b){
-    var r = Math.floor((Math.random() * ALEATORIO_MAXIMO));
-    b = r*TAMANHO_PONTO;
-    console.log(b);
-};
+
 function localizarBomba(){
-    rb(bomba_x.b1);
-    rb(bomba_x.b2);
-    rb(bomba_x.b3);
-    rb(bomba_x.b4);
-    rb(bomba_x.b5);
-    rb(bomba_x.b6);
-    rb(bomba_x.b7);
-    rb(bomba_x.b8);
-    rb(bomba_x.b9);
-    rb(bomba_x.b10);
+    bomba_x.b1 = rb(bomba_x.b1);
+    bomba_x.b2 = rb(bomba_x.b2);
+    bomba_x.b3 = rb(bomba_x.b3);
+    bomba_x.b4 = rb(bomba_x.b4);
+    bomba_x.b5 = rb(bomba_x.b5);
+    bomba_x.b6 = rb(bomba_x.b6);
+    bomba_x.b7 = rb(bomba_x.b7);
+    bomba_x.b8 = rb(bomba_x.b8);
+    bomba_x.b9 = rb(bomba_x.b9);
+    bomba_x.b10 = rb(bomba_x.b10);
 
-    console.log("\n");
-
-    rb(bomba_y.b1);
-    rb(bomba_y.b2);
-    rb(bomba_y.b3);
-    rb(bomba_y.b4);
-    rb(bomba_y.b5);
-    rb(bomba_y.b6);
-    rb(bomba_y.b7);
-    rb(bomba_y.b8);
-    rb(bomba_y.b9);
-    rb(bomba_y.b10);
+    bomba_y.b1 = rb(bomba_y.b1);
+    bomba_y.b2 = rb(bomba_y.b2);
+    bomba_y.b3 = rb(bomba_y.b3);
+    bomba_y.b4 = rb(bomba_y.b4);
+    bomba_y.b5 = rb(bomba_y.b5);
+    bomba_y.b6 = rb(bomba_y.b6);
+    bomba_y.b7 = rb(bomba_y.b7);
+    bomba_y.b8 = rb(bomba_y.b8);
+    bomba_y.b9 = rb(bomba_y.b9);
+    bomba_y.b10 = rb(bomba_y.b10);
 
 }
 
@@ -226,62 +273,108 @@ function cicloDeJogo() {
 }
 
 function verificarMaca() {
-    if ((x[0] == maca_x) && (y[0] == maca_y)) {
+    if ((x[0] == comida_x.c1) && (y[0] == comida_y.c1)) {
         pontos++;
-        localizarMaca();
+        comida_x.c1 = rb(comida_x.c1);
+        comida_y.c1 = rb(comida_y.c1)
+    }
+    if ((x[0] == comida_x.c2) && (y[0] == comida_y.c2)) {
+        pontos++;
+        comida_x.c2 = rb(comida_x.c2);
+        comida_y.c2 = rb(comida_y.c2);
+    }
+    if ((x[0] == comida_x.c3) && (y[0] == comida_y.c3)) {
+        pontos++;
+        comida_x.c3 = rb(comida_x.c3);
+        comida_y.c3 = rb(comida_y.c3);
+    }
+    if ((x[0] == comida_x.c4) && (y[0] == comida_y.c4)) {
+        pontos++;
+        comida_x.c4 = rb(comida_x.c4);
+        comida_y.c4 = rb(comida_y.c4);
+    }
+    if ((x[0] == comida_x.c5) && (y[0] == comida_y.c5)) {
+        pontos++;
+        comida_x.c5 = rb(comida_x.c5);
+        comida_y.c5 = rb(comida_y.c5);
+    }
+    if ((x[0] == comida_x.c6) && (y[0] == comida_y.c6)) {
+        pontos++;
+        comida_x.c6 = rb(comida_x.c6);
+        comida_y.c6 = rb(comida_y.c6);
+    }
+    if ((x[0] == comida_x.c7) && (y[0] == comida_y.c7)) {
+        pontos++;
+        comida_x.c7 = rb(comida_x.c7);
+        comida_y.c7 = rb(comida_y.c7);
+    }
+    if ((x[0] == comida_x.c8) && (y[0] == comida_y.c8)) {
+        pontos++;
+        comida_x.c8 = rb(comida_x.c8);
+        comida_y.c8 = rb(comida_y.c8);
+    }
+    if ((x[0] == comida_x.c9) && (y[0] == comida_y.c9)) {
+        pontos++;
+        comida_x.c9 = rb(comida_x.c9);
+        comida_y.c9 = rb(comida_y.c9);
+    }
+    if ((x[0] == comida_x.c10) && (y[0] == comida_y.c10)) {
+        pontos++;
+        comida_x.c10 = rb(comida_x.c10);
+        comida_y.c10 = rb(comida_y.c10);
     }
 }
 
 function verificarBomba() {
     if((x[0]==bomba_x.b1)&&(y[0]==bomba_y.b1)){
         pontos--;
-        rb(bomba_x.b1);
-        rb(bomba_y.b1);
+        bomba_x.b1 = rb(bomba_x.b1);
+        bomba_y.b1 = rb(bomba_y.b1);
     }
     if((x[0]==bomba_x.b2)&&(y[0]==bomba_y.b2)){
         pontos--;
-        rb(bomba_x.b2);
-        rb(bomba_y.b2);
+        bomba_x.b2 = rb(bomba_x.b2);
+        bomba_y.b2 = rb(bomba_y.b2);
     }
     if((x[0]==bomba_x.b3)&&(y[0]==bomba_y.b3)){
         pontos--;
-        rb(bomba_x.b3);
-        rb(bomba_y.b3);
+        bomba_x.b3 = b(bomba_x.b3);
+        bomba_y.b3 = rb(bomba_y.b3);
     }
     if((x[0]==bomba_x.b4)&&(y[0]==bomba_y.b4)){
         pontos--;
-        rb(bomba_x.b4);
-        rb(bomba_y.b4);
+        bomba_x.b4 = rb(bomba_x.b4);
+        bomba_y.b4 = rb(bomba_y.b4);
     }
     if((x[0]==bomba_x.b5)&&(y[0]==bomba_y.b5)){
         pontos--;
-        rb(bomba_x.b5);
-        rb(bomba_y.b5);
+        bomba_x.b5 = rb(bomba_x.b5);
+        bomba_y.b5 = rb(bomba_y.b5);
     }
     if((x[0]==bomba_x.b6)&&(y[0]==bomba_y.b6)){
         pontos--;
-        rb(bomba_x.b6);
-        rb(bomba_y.b6);
+        bomba_x.b6 = rb(bomba_x.b6);
+        bomba_y.b6 = rb(bomba_y.b6);
     }
     if((x[0]==bomba_x.b7)&&(y[0]==bomba_y.b7)){
         pontos--;
-        rb(bomba_x.b7);
-        rb(bomba_y.b7);
+        bomba_x.b7 = rb(bomba_x.b7);
+        bomba_y.b7 = rb(bomba_y.b7);
     }
     if((x[0]==bomba_x.b8)&&(y[0]==bomba_y.b8)){
         pontos--;
-        rb(bomba_x.b8);
-        rb(bomba_y.b8);
+        bomba_x.b8 = rb(bomba_x.b8);
+        bomba_y.b8 = rb(bomba_y.b8);
     }
     if((x[0]==bomba_x.b9)&&(y[0]==bomba_y.b9)){
         pontos--;
-        rb(bomba_x.b9);
-        rb(bomba_y.b9);
+        bomba_x.b9 = rb(bomba_x.b9);
+        bomba_y.b9 = rb(bomba_y.b9);
     }
     if((x[0]==bomba_x.b10)&&(y[0]==bomba_y.b10)){
         pontos--;
-        rb(bomba_x.b10);
-        rb(bomba_y.b10);
+        bomba_x.b10 = rb(bomba_x.b10);
+        bomba_y.b10 = rb(bomba_y.b10);
     }
 } 
 
@@ -297,19 +390,19 @@ function verificarColisao() {
     }
 
     if (y[0] >= C_ALTURA) {
-        noJogo = false;
+        y[0] = 0;
     }
 
     if (y[0] < 0) {
-       noJogo = false;
+       y[0] = C_ALTURA;
     }
 
     if (x[0] >= C_LARGURA) {
-      noJogo = false;
+      x[0] = 0;
     }
 
     if (x[0] < 0) {
-      noJogo = false;
+      x[0] = C_LARGURA;
     }
 }
 
@@ -343,7 +436,17 @@ function fazerDesenho() {
     grade();
     
     if (noJogo) {
-        ctx.drawImage(maca, maca_x, maca_y);
+        ctx.drawImage(comida.c1, comida_x.c1, comida_y.c1);
+        ctx.drawImage(comida.c2, comida_x.c2, comida_y.c2);
+        ctx.drawImage(comida.c3, comida_x.c3, comida_y.c3);
+        ctx.drawImage(comida.c4, comida_x.c4, comida_y.c4);
+        ctx.drawImage(comida.c5, comida_x.c5, comida_y.c5);
+        ctx.drawImage(comida.c6, comida_x.c6, comida_y.c6);
+        ctx.drawImage(comida.c7, comida_x.c7, comida_y.c7);
+        ctx.drawImage(comida.c8, comida_x.c8, comida_y.c8);
+        ctx.drawImage(comida.c9, comida_x.c9, comida_y.c9);
+        ctx.drawImage(comida.c10, comida_x.c10, comida_y.c10);
+
         ctx.drawImage(bomba.b1,bomba_x.b1,bomba_y.b1);
         ctx.drawImage(bomba.b2,bomba_x.b2,bomba_y.b2);
         ctx.drawImage(bomba.b3,bomba_x.b3,bomba_y.b3);
@@ -354,6 +457,7 @@ function fazerDesenho() {
         ctx.drawImage(bomba.b8,bomba_x.b8,bomba_y.b8);
         ctx.drawImage(bomba.b9,bomba_x.b9,bomba_y.b9);
         ctx.drawImage(bomba.b10,bomba_x.b10,bomba_y.b10);
+
 		
         for (var z = 0; z < pontos; z++) {
             if (z == 0) {
