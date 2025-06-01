@@ -45,7 +45,10 @@ function generateRandomMultipleOf20() {
 }
 
 function outputPontos(){
-    document.getElementById("output").innerHTML = pontos;
+    document.getElementById("output").innerHTML = "Pontuação: "+pontos;
+}
+function outputVidas(){
+    document.getElementById("vidas").innerHTML = "Vidas: "+vidas;
 }
 function outputDebug(x){
     document.getElementById("debug").innerHTML = x;
@@ -87,6 +90,7 @@ var cabeca;
 var bola;
 
 var pontos;
+var vidas = 3;
 
 var paraEsquerda = false;
 var paraDireita = true;
@@ -99,6 +103,7 @@ var noJogo = true;
 const TAMANHO_PONTO = 20;
 const ALEATORIO_MAXIMO = 29;
 const ATRASO = 120;
+const ATRASO_INPUT = 10;
 const C_ALTURA = 600;
 const C_LARGURA = 600;    
 
@@ -166,6 +171,7 @@ function carregarImagens() {
     
     bomba.b10 = new Image();
     bomba.b10.src = "obstaculo.png";
+
 
     comida.c1 = new Image();
     comida.c1.src = "maca.png";
@@ -268,58 +274,74 @@ function cicloDeJogo() {
         fazerDesenho();
         setTimeout("cicloDeJogo()", ATRASO);
         runTime +=10;
-        outputDebug(runTime);
+        outputVidas();
+    }
+}
+
+function pontosParaVidas(){
+    if(pontos%5==0){
+        vidas++;
     }
 }
 
 function verificarMaca() {
     if ((x[0] == comida_x.c1) && (y[0] == comida_y.c1)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c1 = rb(comida_x.c1);
-        comida_y.c1 = rb(comida_y.c1)
+        comida_y.c1 = rb(comida_y.c1);
     }
     if ((x[0] == comida_x.c2) && (y[0] == comida_y.c2)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c2 = rb(comida_x.c2);
         comida_y.c2 = rb(comida_y.c2);
     }
     if ((x[0] == comida_x.c3) && (y[0] == comida_y.c3)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c3 = rb(comida_x.c3);
         comida_y.c3 = rb(comida_y.c3);
     }
     if ((x[0] == comida_x.c4) && (y[0] == comida_y.c4)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c4 = rb(comida_x.c4);
         comida_y.c4 = rb(comida_y.c4);
     }
     if ((x[0] == comida_x.c5) && (y[0] == comida_y.c5)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c5 = rb(comida_x.c5);
         comida_y.c5 = rb(comida_y.c5);
     }
     if ((x[0] == comida_x.c6) && (y[0] == comida_y.c6)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c6 = rb(comida_x.c6);
         comida_y.c6 = rb(comida_y.c6);
     }
     if ((x[0] == comida_x.c7) && (y[0] == comida_y.c7)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c7 = rb(comida_x.c7);
         comida_y.c7 = rb(comida_y.c7);
     }
     if ((x[0] == comida_x.c8) && (y[0] == comida_y.c8)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c8 = rb(comida_x.c8);
         comida_y.c8 = rb(comida_y.c8);
     }
     if ((x[0] == comida_x.c9) && (y[0] == comida_y.c9)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c9 = rb(comida_x.c9);
         comida_y.c9 = rb(comida_y.c9);
     }
     if ((x[0] == comida_x.c10) && (y[0] == comida_y.c10)) {
         pontos++;
+        pontosParaVidas();
         comida_x.c10 = rb(comida_x.c10);
         comida_y.c10 = rb(comida_y.c10);
     }
@@ -328,51 +350,61 @@ function verificarMaca() {
 function verificarBomba() {
     if((x[0]==bomba_x.b1)&&(y[0]==bomba_y.b1)){
         pontos--;
+        vidas--;
         bomba_x.b1 = rb(bomba_x.b1);
         bomba_y.b1 = rb(bomba_y.b1);
     }
     if((x[0]==bomba_x.b2)&&(y[0]==bomba_y.b2)){
         pontos--;
+        vidas--;
         bomba_x.b2 = rb(bomba_x.b2);
         bomba_y.b2 = rb(bomba_y.b2);
     }
     if((x[0]==bomba_x.b3)&&(y[0]==bomba_y.b3)){
         pontos--;
+        vidas--;
         bomba_x.b3 = b(bomba_x.b3);
         bomba_y.b3 = rb(bomba_y.b3);
     }
     if((x[0]==bomba_x.b4)&&(y[0]==bomba_y.b4)){
         pontos--;
+        vidas--;
         bomba_x.b4 = rb(bomba_x.b4);
         bomba_y.b4 = rb(bomba_y.b4);
     }
     if((x[0]==bomba_x.b5)&&(y[0]==bomba_y.b5)){
         pontos--;
+        vidas--;
         bomba_x.b5 = rb(bomba_x.b5);
         bomba_y.b5 = rb(bomba_y.b5);
     }
     if((x[0]==bomba_x.b6)&&(y[0]==bomba_y.b6)){
         pontos--;
+        vidas--;
         bomba_x.b6 = rb(bomba_x.b6);
         bomba_y.b6 = rb(bomba_y.b6);
     }
     if((x[0]==bomba_x.b7)&&(y[0]==bomba_y.b7)){
         pontos--;
+        vidas--;
         bomba_x.b7 = rb(bomba_x.b7);
         bomba_y.b7 = rb(bomba_y.b7);
     }
     if((x[0]==bomba_x.b8)&&(y[0]==bomba_y.b8)){
         pontos--;
+        vidas--;
         bomba_x.b8 = rb(bomba_x.b8);
         bomba_y.b8 = rb(bomba_y.b8);
     }
     if((x[0]==bomba_x.b9)&&(y[0]==bomba_y.b9)){
         pontos--;
+        vidas--;
         bomba_x.b9 = rb(bomba_x.b9);
         bomba_y.b9 = rb(bomba_y.b9);
     }
     if((x[0]==bomba_x.b10)&&(y[0]==bomba_y.b10)){
         pontos--;
+        vidas--;
         bomba_x.b10 = rb(bomba_x.b10);
         bomba_y.b10 = rb(bomba_y.b10);
     }
@@ -385,8 +417,13 @@ function verificarColisao() {
         }
     }
 
-    if(pontos<=0){
+    if(vidas==0){
         noJogo = false;
+    }
+
+    if((pontos==0)&&(vidas!=0)){
+        pontos=1;
+        vidas--;
     }
 
     if (y[0] >= C_ALTURA) {
