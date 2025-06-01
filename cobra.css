@@ -12,8 +12,5 @@ body {
     justify-content: center;
     flex-direction: column;
     color: white;
-}
-
-canvas {
-    background-color: #050206;
+    overflow: hidden;
 }
