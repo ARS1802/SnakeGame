@@ -14,3 +14,7 @@ body {
     color: white;
     overflow: hidden;
 }
+
+.output{
+    color:aqua;
+}

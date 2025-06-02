@@ -374,7 +374,7 @@ function verificarBomba() {
     if((x[0]==bomba_x.b3)&&(y[0]==bomba_y.b3)){
         pontos--;
         vidas--;
-        bomba_x.b3 = b(bomba_x.b3);
+        bomba_x.b3 = rb(bomba_x.b3);
         bomba_y.b3 = rb(bomba_y.b3);
     }
     if((x[0]==bomba_x.b4)&&(y[0]==bomba_y.b4)){
@@ -521,7 +521,7 @@ function fimDeJogo() {
     ctx.fillStyle = "white";
     ctx.textBaseline = "middle"; 
     ctx.textAlign = "center"; 
-    ctx.font = "normal bold 18px serif";
+    ctx.font = "normal bold 50px serif";
     ctx.fillText("Fim de Jogo", C_LARGURA/2, C_ALTURA/2);
 }
 
