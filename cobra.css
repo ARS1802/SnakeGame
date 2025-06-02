@@ -11,6 +11,44 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: white;
+    color: #C0C0C0;
     overflow: hidden;
+}
+
+#tela{
+    display: block;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#ranking{
+    margin-left: 90px;
+}
+
+#primeiro_lugar{
+    background-color: gold;
+    color: black;
+    font-size: 50px;
+}
+
+#segundo_lugar{
+    color: #808080;
+    font-size: 30px;
+}
+
+#terceiro_lugar{
+    color: #B87333;
+    font-size: 30px;
+}
+
+#quarto_lugar{
+    font-size: 30px;
+}
+#quinto_lugar{
+    font-size: 30px;
 }
