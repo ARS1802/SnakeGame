@@ -22,11 +22,18 @@ function direcaoAleatoria(){
 
 function grade(){
     for(let i = 0 ; i<=tela.width ; i+=20){
-        ctx.strokeStyle = "yellow";
-        ctx.lineWidth = 0.2;
+        ctx.strokeStyle = "#202E3B";
+        ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(i,0);
         ctx.lineTo(i,tela.height);
+        ctx.stroke();
+    }
+    for(let i = 0 ; i<=tela.height ; i+=20){
+        ctx.strokeStyle = "#070C11";
+        ctx.lineWidth = 0.2;
+        ctx.moveTo(0,i);
+        ctx.lineTo(tela.width,i);
         ctx.stroke();
     }
 }
@@ -59,7 +66,7 @@ function rb(b){
     return b;
 };
 //-----------
-
+//#070C11
 // Declaração de variáveis e constantes
 const bomba = {
     b1:0,b2:0,b3:0,b4:0,b5:0,b6:0,b7:0,b8:0,b9:0,b10:0
@@ -88,6 +95,7 @@ var ctx;
 
 var cabeca;
 var bola;
+var background;
 
 var pontos;
 var vidas = 3;
@@ -140,7 +148,10 @@ function carregarImagens() {
     cabeca.src = "cabeca.png";    
     
     bola = new Image();
-    bola.src = "ponto.png"; 
+    bola.src = "ponto.png";
+
+    background = new Image();
+    background.src = "backgroud.png";
 
     bomba.b1 = new Image();
     bomba.b1.src = "obstaculo.png";
@@ -363,7 +374,8 @@ function verificarBomba() {
     if((x[0]==bomba_x.b3)&&(y[0]==bomba_y.b3)){
         pontos--;
         vidas--;
-        bomba_x.b3 = b(bomba_x.b3);
+
+        bomba_x.b3 = rb(bomba_x.b3);
         bomba_y.b3 = rb(bomba_y.b3);
     }
     if((x[0]==bomba_x.b4)&&(y[0]==bomba_y.b4)){
@@ -467,9 +479,7 @@ function mover() {
 }    
 
 function fazerDesenho() {
-    ctx.fillStyle = "#050206";
-    ctx.fillRect(0,0,C_LARGURA,C_ALTURA);
-
+    ctx.drawImage(background,0,0)
     grade();
     
     if (noJogo) {
@@ -512,7 +522,7 @@ function fimDeJogo() {
     ctx.fillStyle = "white";
     ctx.textBaseline = "middle"; 
     ctx.textAlign = "center"; 
-    ctx.font = "normal bold 18px serif";
+    ctx.font = "normal bold 50px serif";
     ctx.fillText("Fim de Jogo", C_LARGURA/2, C_ALTURA/2);
 }
 
