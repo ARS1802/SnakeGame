@@ -374,7 +374,6 @@ function verificarBomba() {
     if((x[0]==bomba_x.b3)&&(y[0]==bomba_y.b3)){
         pontos--;
         vidas--;
-
         bomba_x.b3 = rb(bomba_x.b3);
         bomba_y.b3 = rb(bomba_y.b3);
     }
