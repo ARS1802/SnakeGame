@@ -9,9 +9,9 @@
     <title>Snake Game</title>
 </head>
 
-<body>
+<body onload="get()">
     <audio>
-        <source scr="SpongeBob sad music.mp3">
+        <source scr="SOUNDS\SpongeBob sad music.mp3">
     </audio>
     <h1 id = "output">The Most Abominous Snake Game of All Time</h1>
     <h2 id="vidas" style="color: rgb(255, 0, 93)"></h2>
@@ -21,13 +21,15 @@
             <button class="botaozin">Iniciar Jogo</button>
         <div id = "ranking">
         <ol id = "ranking_list">
-            <li id = "primeiro_lugar">primeiro_lugar</li>
+            <li id = "primeiro_lugar">primeiro lugar</li>
             <li id = "segundo_lugar">segundo_lugar</li>
             <li id = "terceiro_lugar">terceiro_lugar</li>
             <li id = "quarto_lugar">quarto_lugar</li>
             <li id = "quinto_lugar">quinto_lugar</li>
         </ol>
-    </div>
+        <input type="text" id="player_name"/>
+        <button onclick="save()" id="save_button">SAVE</button>
+        </div>
     </div>
     <script src="cobra.js"></script>
 </body>

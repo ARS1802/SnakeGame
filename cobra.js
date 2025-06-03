@@ -65,8 +65,28 @@ function rb(b){
     b = r*TAMANHO_PONTO;
     return b;
 };
+
+function createPlayer(nome,runTime,pontos){
+    const player ={
+        nome,
+        runTime,
+        pontos
+    }
+    return player;
+}
+
+function get(){
+    //localStorage.getItem("storedPlayer");
+    //document.getElementById("debug").innerHTML = storedPlayer;
+
+};
+
+function save(){
+    //var Nome = document.getElementById("player_name").value;
+    //localStorage.setItem("storedPlayer",createPlayer(Nome,runTime,pontos));
+};
 //-----------
-//#070C11
+
 // Declaração de variáveis e constantes
 const bomba = {
     b1:0,b2:0,b3:0,b4:0,b5:0,b6:0,b7:0,b8:0,b9:0,b10:0
@@ -87,9 +107,14 @@ const comida_x = {
 const comida_y = {
     c1:0,c2:0,c3:0,c4:0,c5:0,c6:0,c7:0,c8:0,c9:0,c10:0
 }
-const morte = new Audio("SpongeBob sad music.mp3")
+const morte = new Audio("SOUNDS/SpongeBob sad music.mp3");
+const START = document.querySelector(".botaozin");
+const comilanca = new Audio("SOUNDS/Munch-sound-effect.mp3");
 
-const START = document.querySelector(".botaozin")
+const SAVE_INPUT = document.getElementById("player_name");
+const SAVE_BUTTON = document.getElementById("player_name");
+
+var storedPlayer = localStorage.getItem("storedPlayer");
 var runTime;
 
 var tela;
@@ -289,6 +314,7 @@ function cicloDeJogo() {
         setTimeout("cicloDeJogo()", ATRASO);
         runTime +=10;
         outputVidas();
+        outputDebug(runTime);
     }
 }
 
@@ -304,60 +330,70 @@ function verificarMaca() {
         pontosParaVidas();
         comida_x.c1 = rb(comida_x.c1);
         comida_y.c1 = rb(comida_y.c1);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c2) && (y[0] == comida_y.c2)) {
         pontos++;
         pontosParaVidas();
         comida_x.c2 = rb(comida_x.c2);
         comida_y.c2 = rb(comida_y.c2);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c3) && (y[0] == comida_y.c3)) {
         pontos++;
         pontosParaVidas();
         comida_x.c3 = rb(comida_x.c3);
         comida_y.c3 = rb(comida_y.c3);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c4) && (y[0] == comida_y.c4)) {
         pontos++;
         pontosParaVidas();
         comida_x.c4 = rb(comida_x.c4);
         comida_y.c4 = rb(comida_y.c4);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c5) && (y[0] == comida_y.c5)) {
         pontos++;
         pontosParaVidas();
         comida_x.c5 = rb(comida_x.c5);
         comida_y.c5 = rb(comida_y.c5);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c6) && (y[0] == comida_y.c6)) {
         pontos++;
         pontosParaVidas();
         comida_x.c6 = rb(comida_x.c6);
         comida_y.c6 = rb(comida_y.c6);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c7) && (y[0] == comida_y.c7)) {
         pontos++;
         pontosParaVidas();
         comida_x.c7 = rb(comida_x.c7);
         comida_y.c7 = rb(comida_y.c7);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c8) && (y[0] == comida_y.c8)) {
         pontos++;
         pontosParaVidas();
         comida_x.c8 = rb(comida_x.c8);
         comida_y.c8 = rb(comida_y.c8);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c9) && (y[0] == comida_y.c9)) {
         pontos++;
         pontosParaVidas();
         comida_x.c9 = rb(comida_x.c9);
         comida_y.c9 = rb(comida_y.c9);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c10) && (y[0] == comida_y.c10)) {
         pontos++;
         pontosParaVidas();
         comida_x.c10 = rb(comida_x.c10);
         comida_y.c10 = rb(comida_y.c10);
+        comilanca.play()
     }
 }
 
@@ -528,6 +564,10 @@ function fimDeJogo() {
     ctx.fillText("Fim de Jogo", C_LARGURA/2, C_ALTURA/2);
     morte.play();
     morte.volume = 0.2;
+    
+    
+    SAVE_INPUT.hidden = false;
+    SAVE_BUTTON.hidden = false;
 }
 
 function verificarTecla(e) {
