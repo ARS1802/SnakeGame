@@ -21,6 +21,7 @@ body {
 }
 
 .container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -52,4 +53,17 @@ body {
 #quinto_lugar{
     font-size: 30px;
 }
-
+.botaozin{
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    background-color: darkred;
+    color: white;
+    padding:10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: x-small;
+    transition: background-color 0.3s ease;
+}

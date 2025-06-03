@@ -87,7 +87,9 @@ const comida_x = {
 const comida_y = {
     c1:0,c2:0,c3:0,c4:0,c5:0,c6:0,c7:0,c8:0,c9:0,c10:0
 }
+const morte = new Audio("SpongeBob sad music.mp3")
 
+const START = document.querySelector(".botaozin")
 var runTime;
 
 var tela;
@@ -125,9 +127,10 @@ var y = [];
 
 onkeydown = verificarTecla; // Define função chamada ao se pressionar uma tecla
 
-
+START.addEventListener('click', function() {
 iniciar(); // Chama função inicial do jogo
-
+START.hidden = true;
+});
 
 // Definição das funções
 
@@ -523,6 +526,8 @@ function fimDeJogo() {
     ctx.textAlign = "center"; 
     ctx.font = "normal bold 50px serif";
     ctx.fillText("Fim de Jogo", C_LARGURA/2, C_ALTURA/2);
+    morte.play();
+    morte.volume = 0.2;
 }
 
 function verificarTecla(e) {
