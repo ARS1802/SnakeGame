@@ -90,6 +90,13 @@ const comida_y = {
 const morte = new Audio("SpongeBob sad music.mp3")
 
 const START = document.querySelector(".botaozin")
+
+const comilanca = new Audio("Munch.mp3")
+comilanca.volume = 0.3
+
+const explosao = new Audio("Explosion.mp3")
+explosao.volume = 0.3
+
 var runTime;
 
 var tela;
@@ -304,60 +311,70 @@ function verificarMaca() {
         pontosParaVidas();
         comida_x.c1 = rb(comida_x.c1);
         comida_y.c1 = rb(comida_y.c1);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c2) && (y[0] == comida_y.c2)) {
         pontos++;
         pontosParaVidas();
         comida_x.c2 = rb(comida_x.c2);
         comida_y.c2 = rb(comida_y.c2);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c3) && (y[0] == comida_y.c3)) {
         pontos++;
         pontosParaVidas();
         comida_x.c3 = rb(comida_x.c3);
         comida_y.c3 = rb(comida_y.c3);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c4) && (y[0] == comida_y.c4)) {
         pontos++;
         pontosParaVidas();
         comida_x.c4 = rb(comida_x.c4);
         comida_y.c4 = rb(comida_y.c4);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c5) && (y[0] == comida_y.c5)) {
         pontos++;
         pontosParaVidas();
         comida_x.c5 = rb(comida_x.c5);
         comida_y.c5 = rb(comida_y.c5);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c6) && (y[0] == comida_y.c6)) {
         pontos++;
         pontosParaVidas();
         comida_x.c6 = rb(comida_x.c6);
         comida_y.c6 = rb(comida_y.c6);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c7) && (y[0] == comida_y.c7)) {
         pontos++;
         pontosParaVidas();
         comida_x.c7 = rb(comida_x.c7);
         comida_y.c7 = rb(comida_y.c7);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c8) && (y[0] == comida_y.c8)) {
         pontos++;
         pontosParaVidas();
         comida_x.c8 = rb(comida_x.c8);
         comida_y.c8 = rb(comida_y.c8);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c9) && (y[0] == comida_y.c9)) {
         pontos++;
         pontosParaVidas();
         comida_x.c9 = rb(comida_x.c9);
         comida_y.c9 = rb(comida_y.c9);
+        comilanca.play()
     }
     if ((x[0] == comida_x.c10) && (y[0] == comida_y.c10)) {
         pontos++;
         pontosParaVidas();
         comida_x.c10 = rb(comida_x.c10);
         comida_y.c10 = rb(comida_y.c10);
+        comilanca.play()
     }
 }
 
@@ -367,60 +384,70 @@ function verificarBomba() {
         vidas--;
         bomba_x.b1 = rb(bomba_x.b1);
         bomba_y.b1 = rb(bomba_y.b1);
+        explosao.play();
     }
     if((x[0]==bomba_x.b2)&&(y[0]==bomba_y.b2)){
         pontos--;
         vidas--;
         bomba_x.b2 = rb(bomba_x.b2);
         bomba_y.b2 = rb(bomba_y.b2);
+        explosao.play();
     }
     if((x[0]==bomba_x.b3)&&(y[0]==bomba_y.b3)){
         pontos--;
         vidas--;
         bomba_x.b3 = rb(bomba_x.b3);
         bomba_y.b3 = rb(bomba_y.b3);
+        explosao.play();
     }
     if((x[0]==bomba_x.b4)&&(y[0]==bomba_y.b4)){
         pontos--;
         vidas--;
         bomba_x.b4 = rb(bomba_x.b4);
         bomba_y.b4 = rb(bomba_y.b4);
+        explosao.play();
     }
     if((x[0]==bomba_x.b5)&&(y[0]==bomba_y.b5)){
         pontos--;
         vidas--;
         bomba_x.b5 = rb(bomba_x.b5);
         bomba_y.b5 = rb(bomba_y.b5);
+        explosao.play();
     }
     if((x[0]==bomba_x.b6)&&(y[0]==bomba_y.b6)){
         pontos--;
         vidas--;
         bomba_x.b6 = rb(bomba_x.b6);
         bomba_y.b6 = rb(bomba_y.b6);
+        explosao.play();
     }
     if((x[0]==bomba_x.b7)&&(y[0]==bomba_y.b7)){
         pontos--;
         vidas--;
         bomba_x.b7 = rb(bomba_x.b7);
         bomba_y.b7 = rb(bomba_y.b7);
+        explosao.play();
     }
     if((x[0]==bomba_x.b8)&&(y[0]==bomba_y.b8)){
         pontos--;
         vidas--;
         bomba_x.b8 = rb(bomba_x.b8);
         bomba_y.b8 = rb(bomba_y.b8);
+        explosao.play();
     }
     if((x[0]==bomba_x.b9)&&(y[0]==bomba_y.b9)){
         pontos--;
         vidas--;
         bomba_x.b9 = rb(bomba_x.b9);
         bomba_y.b9 = rb(bomba_y.b9);
+        explosao.play();
     }
     if((x[0]==bomba_x.b10)&&(y[0]==bomba_y.b10)){
         pontos--;
         vidas--;
         bomba_x.b10 = rb(bomba_x.b10);
         bomba_y.b10 = rb(bomba_y.b10);
+        explosao.play();
     }
 } 
 
