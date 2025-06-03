@@ -89,6 +89,7 @@ const comida_y = {
 }
 const morte = new Audio("SpongeBob sad music.mp3")
 
+const START = document.querySelector(".botaozin")
 var runTime;
 
 var tela;
@@ -126,9 +127,10 @@ var y = [];
 
 onkeydown = verificarTecla; // Define função chamada ao se pressionar uma tecla
 
-
+START.addEventListener('click', function() {
 iniciar(); // Chama função inicial do jogo
-
+START.hidden = true;
+});
 
 // Definição das funções
 
