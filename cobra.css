@@ -13,13 +13,23 @@ body {
     flex-direction: column;
     color: #C0C0C0;
     overflow: hidden;
+    background-image: url('IMAGES/site_background.png'); /* Replace with your image path */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-size: cover; /* Ensures the image covers the entire area */
+    font-family: "Jacquard 12", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #tela{
     display: block;
     margin: 0;
 }
+#output{
+    color: #09162e;
 
+}
 .container {
     position: relative;
     display: flex;
@@ -53,16 +63,17 @@ body {
     font-size: 30px;
 }
 .botaozin{
+    font-family: "Jacquard 12";
     position: absolute;
     top: 50%;
     width: 50%;
     transform: translate(-50%, -50%);
-    background-color: darkred;
-    color: white;
+    background-color: #070C11;
+    color: rgba(255, 255, 255, 0.411);
     padding:10px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: x-small;
+    font-size: x-large;
     transition: background-color 0.3s ease;
 }
