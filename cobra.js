@@ -74,17 +74,14 @@ function createPlayer(nome,runTime,pontos){
     }
     return player;
 }
-
+const SAVE_INPUT = document.getElementById("player_name");
+const SAVE_BUTTON = document.getElementById("save_button");
 function get(){
-    //localStorage.getItem("storedPlayer");
-    //document.getElementById("debug").innerHTML = storedPlayer;
+    SAVE_INPUT.hidden = true;
+    SAVE_BUTTON.hidden = true;
 
 };
 
-function save(){
-    //var Nome = document.getElementById("player_name").value;
-    //localStorage.setItem("storedPlayer",createPlayer(Nome,runTime,pontos));
-};
 //-----------
 
 // Declaração de variáveis e constantes
@@ -111,11 +108,8 @@ const morte = new Audio("SOUNDS/SpongeBob sad music.mp3");
 const START = document.querySelector(".botaozin");
 const comilanca = new Audio("SOUNDS/Munch-sound-effect.mp3");
 
-const SAVE_INPUT = document.getElementById("player_name");
-const SAVE_BUTTON = document.getElementById("player_name");
+var storedPlayer;
 
-var storedPlayer = localStorage.getItem("storedPlayer");
-var runTime;
 
 var tela;
 var ctx;
@@ -124,6 +118,7 @@ var cabeca;
 var bola;
 var background;
 
+var runTime;
 var pontos;
 var vidas = 3;
 
@@ -173,74 +168,74 @@ function iniciar() {
 
 function carregarImagens() {
     cabeca = new Image();
-    cabeca.src = "cabeca.png";    
+    cabeca.src = "IMAGES/cabeca.png";    
     
     bola = new Image();
-    bola.src = "ponto.png";
+    bola.src = "IMAGES/ponto.png";
 
     background = new Image();
-    background.src = "backgroud.png";
+    background.src = "IMAGES/backgroud.png";
 
     bomba.b1 = new Image();
-    bomba.b1.src = "obstaculo.png";
+    bomba.b1.src = "IMAGES/obstaculo.png";
     
     bomba.b2 = new Image();
-    bomba.b2.src = "obstaculo.png";
+    bomba.b2.src = "IMAGES/obstaculo.png";
     
     bomba.b3 = new Image();
-    bomba.b3.src = "obstaculo.png";
+    bomba.b3.src = "IMAGES/obstaculo.png";
     
     bomba.b4 = new Image();
-    bomba.b4.src = "obstaculo.png";
+    bomba.b4.src = "IMAGES/obstaculo.png";
     
     bomba.b5 = new Image();
-    bomba.b5.src = "obstaculo.png";
+    bomba.b5.src = "IMAGES/obstaculo.png";
     
     bomba.b6 = new Image();
-    bomba.b6.src = "obstaculo.png";
+    bomba.b6.src = "IMAGES/obstaculo.png";
     
     bomba.b7 = new Image();
-    bomba.b7.src = "obstaculo.png";
+    bomba.b7.src = "IMAGES/obstaculo.png";
 
     bomba.b8 = new Image();
-    bomba.b8.src = "obstaculo.png";
+    bomba.b8.src = "IMAGES/obstaculo.png";
 
     bomba.b9 = new Image();
-    bomba.b9.src = "obstaculo.png";
+    bomba.b9.src = "IMAGES/obstaculo.png";
     
     bomba.b10 = new Image();
-    bomba.b10.src = "obstaculo.png";
+    bomba.b10.src = "IMAGES/obstaculo.png";
 
 
     comida.c1 = new Image();
-    comida.c1.src = "maca.png";
+    comida.c1.src = "IMAGES/maca.png";
     
     comida.c2 = new Image();
-    comida.c2.src = "maca.png";
+    comida.c2.src = "IMAGES/maca.png";
     
     comida.c3 = new Image();
-    comida.c3.src = "maca.png";
+    comida.c3.src = "IMAGES/maca.png";
     
     comida.c4 = new Image();
-    comida.c4.src = "maca.png";
+    comida.c4.src = "IMAGES/maca.png";
     
     comida.c5 = new Image();
-    comida.c5.src = "maca.png";
+    comida.c5.src = "IMAGES/maca.png";
     
     comida.c6 = new Image();
-    comida.c6.src = "maca.png";
+    comida.c6.src = "IMAGES/maca.png";
     
     comida.c7 = new Image();
-    comida.c7.src = "maca.png";
+    comida.c7.src = "IMAGES/maca.png";
     
     comida.c8 = new Image();
-    comida.c8.src = "maca.png";
+    comida.c8.src = "IMAGES/maca.png";
     
     comida.c9 = new Image();
-    comida.c9.src = "maca.png";
+    comida.c9.src = "IMAGES/maca.png";
     
     comida.c10 = new Image();
-    comida.c10.src = "maca.png";
+    comida.c10.src = "IMAGES/maca.png";
 }
 
 function criarCobra() {
@@ -597,3 +592,13 @@ function verificarTecla(e) {
         paraEsquerda = false;
     }        
 }
+
+SAVE_BUTTON.addEventListener("click",() =>{
+        const Nome = SAVE_INPUT.value;
+        const player_template = createPlayer(Nome,runTime,pontos);
+        localStorage.setItem("storedPlayerName",player_template.nome);
+        localStorage.setItem("storedPlayerRunTime",player_template.runTime);
+        localStorage.setItem("storedPlayerPontos",player_template.pontos);
+        get();
+        location.reload();
+    },{once:true})
