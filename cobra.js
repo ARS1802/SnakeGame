@@ -52,10 +52,10 @@ function generateRandomMultipleOf20() {
 }
 
 function outputPontos(){
-    document.getElementById("output").innerHTML = "Pontuação: "+pontos;
+    document.getElementById("pontuacao").innerHTML = pontos;
 }
 function outputVidas(){
-    document.getElementById("vidas").innerHTML = "Vidas: "+vidas;
+    document.getElementById("vidas").innerHTML = vidas;
 }
 function outputDebug(x){
     document.getElementById("debug").innerHTML = x;
@@ -109,7 +109,13 @@ const START = document.querySelector(".botaozin");
 const comilanca = new Audio("SOUNDS/Munch-sound-effect.mp3");
 
 var storedPlayer;
+const TITLE = document.getElementById("title");
+TITLE.hidden = false;
+const PONTUACAO = document.getElementById("pontuacao");
+PONTUACAO.hidden = true;
 
+const explosao = new Audio("Explosion.mp3")
+explosao.volume = 0.3
 
 var tela;
 var ctx;
@@ -148,6 +154,7 @@ var y = [];
 onkeydown = verificarTecla; // Define função chamada ao se pressionar uma tecla
 
 START.addEventListener('click', function() {
+    TITLE.hidden = true;
 iniciar(); // Chama função inicial do jogo
 START.hidden = true;
 });
@@ -158,6 +165,7 @@ function iniciar() {
     tela = document.getElementById("tela");
     ctx = tela.getContext("2d");
     runTime = 0;
+    PONTUACAO.hidden = false;
 
     carregarImagens();
     criarCobra();
@@ -398,60 +406,70 @@ function verificarBomba() {
         vidas--;
         bomba_x.b1 = rb(bomba_x.b1);
         bomba_y.b1 = rb(bomba_y.b1);
+        explosao.play();
     }
     if((x[0]==bomba_x.b2)&&(y[0]==bomba_y.b2)){
         pontos--;
         vidas--;
         bomba_x.b2 = rb(bomba_x.b2);
         bomba_y.b2 = rb(bomba_y.b2);
+        explosao.play();
     }
     if((x[0]==bomba_x.b3)&&(y[0]==bomba_y.b3)){
         pontos--;
         vidas--;
         bomba_x.b3 = rb(bomba_x.b3);
         bomba_y.b3 = rb(bomba_y.b3);
+        explosao.play();
     }
     if((x[0]==bomba_x.b4)&&(y[0]==bomba_y.b4)){
         pontos--;
         vidas--;
         bomba_x.b4 = rb(bomba_x.b4);
         bomba_y.b4 = rb(bomba_y.b4);
+        explosao.play();
     }
     if((x[0]==bomba_x.b5)&&(y[0]==bomba_y.b5)){
         pontos--;
         vidas--;
         bomba_x.b5 = rb(bomba_x.b5);
         bomba_y.b5 = rb(bomba_y.b5);
+        explosao.play();
     }
     if((x[0]==bomba_x.b6)&&(y[0]==bomba_y.b6)){
         pontos--;
         vidas--;
         bomba_x.b6 = rb(bomba_x.b6);
         bomba_y.b6 = rb(bomba_y.b6);
+        explosao.play();
     }
     if((x[0]==bomba_x.b7)&&(y[0]==bomba_y.b7)){
         pontos--;
         vidas--;
         bomba_x.b7 = rb(bomba_x.b7);
         bomba_y.b7 = rb(bomba_y.b7);
+        explosao.play();
     }
     if((x[0]==bomba_x.b8)&&(y[0]==bomba_y.b8)){
         pontos--;
         vidas--;
         bomba_x.b8 = rb(bomba_x.b8);
         bomba_y.b8 = rb(bomba_y.b8);
+        explosao.play();
     }
     if((x[0]==bomba_x.b9)&&(y[0]==bomba_y.b9)){
         pontos--;
         vidas--;
         bomba_x.b9 = rb(bomba_x.b9);
         bomba_y.b9 = rb(bomba_y.b9);
+        explosao.play();
     }
     if((x[0]==bomba_x.b10)&&(y[0]==bomba_y.b10)){
         pontos--;
         vidas--;
         bomba_x.b10 = rb(bomba_x.b10);
         bomba_y.b10 = rb(bomba_y.b10);
+        explosao.play();
     }
 } 
 
@@ -552,15 +570,15 @@ function fazerDesenho() {
 }
 
 function fimDeJogo() {
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#ffffff69";
     ctx.textBaseline = "middle"; 
     ctx.textAlign = "center"; 
-    ctx.font = "normal bold 50px serif";
+    ctx.font = "normal bold 80px Jacquard";
     ctx.fillText("Fim de Jogo", C_LARGURA/2, C_ALTURA/2);
     morte.play();
     morte.volume = 0.2;
     
-    
+    TITLE.hidden = false;
     SAVE_INPUT.hidden = false;
     SAVE_BUTTON.hidden = false;
 }

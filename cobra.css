@@ -27,8 +27,17 @@ body {
     margin: 0;
 }
 #output{
-    color: #09162e;
-
+    color: white;
+}
+#pontucao{
+    font-size: xx-large;
+}
+#vidas{
+    color: rgb(255, 0, 93);
+}
+#title{
+    color: #ffffff69;
+    font-size: xx-large;
 }
 .container {
     position: relative;
@@ -62,6 +71,17 @@ body {
 #quinto_lugar{
     font-size: 30px;
 }
+#player_name{
+    font-size: xx-large;
+    background-color: #070C11;
+}
+#save_button{
+    font-family: "Jacquard 12";
+    padding:10px 20px;
+    font-size: xx-large;
+    color: rgba(255, 255, 255, 0.411);
+    background-color: #070C11;
+}
 .botaozin{
     font-family: "Jacquard 12";
     position: absolute;
@@ -69,7 +89,7 @@ body {
     width: 50%;
     transform: translate(-50%, -50%);
     background-color: #070C11;
-    color: rgba(255, 255, 255, 0.411);
+    color: #ffffff69;
     padding:10px 20px;
     border: none;
     border-radius: 10px;
