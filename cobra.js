@@ -51,6 +51,25 @@ function generateRandomMultipleOf20() {
   return randomNumber;
 }
 
+function bubbleSort(arr, key) {
+  const n = arr.length;
+  let swapped;
+
+  do {
+    swapped = false;
+    for (let i = 0; i < n - 1; i++) {
+      if (arr[i][key] < arr[i + 1][key]) {
+        const temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+
+  return arr;
+}
+
 function outputPontos(){
     document.getElementById("pontuacao").innerHTML = pontos;
 }
@@ -67,8 +86,9 @@ function rb(b){
 };
 
 function createPlayer(nome,runTime,pontos){
-    const player ={
-        nome,
+    const nome_filtrado = nome.replace(/[^a-zA-Z0-9_]/g,'_');
+    const player = {}
+    player[nome_filtrado] = {
         runTime,
         pontos
     }
@@ -76,10 +96,20 @@ function createPlayer(nome,runTime,pontos){
 }
 const SAVE_INPUT = document.getElementById("player_name");
 const SAVE_BUTTON = document.getElementById("save_button");
+
 function get(){
     SAVE_INPUT.hidden = true;
     SAVE_BUTTON.hidden = true;
 
+    var last_ranking = localStorage.getItem("ranking");
+    var ranking = JSON.parse(last_ranking);
+    var ranking_list = document.querySelectorAll("#ranking_list li");
+    ranking_list = ranking
+    document.getElementById("primeiro_lugar").innerHTML = ranking[0];
+    document.getElementById("segundo_lugar").innerHTML = ranking[1];
+    document.getElementById("terceiro_lugar").innerHTML = ranking[2];
+    document.getElementById("quarto_lugar").innerHTML = ranking[3];
+    document.getElementById("quinto_lugar").innerHTML = ranking[4];
 };
 
 //-----------
@@ -108,13 +138,12 @@ const morte = new Audio("SOUNDS/SpongeBob sad music.mp3");
 const START = document.querySelector(".botaozin");
 const comilanca = new Audio("SOUNDS/Munch-sound-effect.mp3");
 
-var storedPlayer;
 const TITLE = document.getElementById("title");
 TITLE.hidden = false;
 const PONTUACAO = document.getElementById("pontuacao");
 PONTUACAO.hidden = true;
 
-const explosao = new Audio("Explosion.mp3")
+const explosao = new Audio("SOUNDS/Explosion.mp3")
 explosao.volume = 0.3
 
 var tela;
@@ -611,12 +640,16 @@ function verificarTecla(e) {
     }        
 }
 
+let aux;
 SAVE_BUTTON.addEventListener("click",() =>{
         const Nome = SAVE_INPUT.value;
-        const player_template = createPlayer(Nome,runTime,pontos);
-        localStorage.setItem("storedPlayerName",player_template.nome);
-        localStorage.setItem("storedPlayerRunTime",player_template.runTime);
-        localStorage.setItem("storedPlayerPontos",player_template.pontos);
+        var player_template = createPlayer(Nome,runTime,pontos);
+        let lista_players = [];
+        lista_players.push(player_template);
+
+        var ranking_stored = [];
+        ranking_stored = bubbleSort(lista_players,"pontos");
+        localStorage.setItem("ranking", JSON.stringify(ranking_stored));
         get();
         location.reload();
     },{once:true})

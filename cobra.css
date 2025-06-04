@@ -50,25 +50,29 @@ body {
     margin-left: 90px;
 }
 
-#primeiro_lugar{
+#ranking_list li{
+    padding-bottom: 20px;
+}
+
+.primeiro_lugar{
     color: gold;
     font-size: 50px;
 }
 
-#segundo_lugar{
+.segundo_lugar{
     color: #808080;
     font-size: 30px;
 }
 
-#terceiro_lugar{
+.terceiro_lugar{
     color: #B87333;
     font-size: 30px;
 }
 
-#quarto_lugar{
+.quarto_lugar{
     font-size: 30px;
 }
-#quinto_lugar{
+.quinto_lugar{
     font-size: 30px;
 }
 #player_name{
