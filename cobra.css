@@ -13,14 +13,34 @@ body {
     flex-direction: column;
     color: #C0C0C0;
     overflow: hidden;
+    background-image: url('IMAGES/site_background.png'); /* Replace with your image path */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-size: cover; /* Ensures the image covers the entire area */
+    font-family: "Jacquard 12", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #tela{
     display: block;
     margin: 0;
 }
-
+#output{
+    color: white;
+}
+#pontucao{
+    font-size: xx-large;
+}
+#vidas{
+    color: rgb(255, 0, 93);
+}
+#title{
+    color: #ffffff69;
+    font-size: xx-large;
+}
 .container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -30,25 +50,55 @@ body {
     margin-left: 90px;
 }
 
-#primeiro_lugar{
-    background-color: gold;
-    color: black;
+#ranking_list li{
+    padding-bottom: 20px;
+}
+
+.primeiro_lugar{
+    color: gold;
     font-size: 50px;
 }
 
-#segundo_lugar{
+.segundo_lugar{
     color: #808080;
     font-size: 30px;
 }
 
-#terceiro_lugar{
+.terceiro_lugar{
     color: #B87333;
     font-size: 30px;
 }
 
-#quarto_lugar{
+.quarto_lugar{
     font-size: 30px;
 }
-#quinto_lugar{
+.quinto_lugar{
     font-size: 30px;
+}
+#player_name{
+    font-size: xx-large;
+    color:aliceblue;
+    background-color: #070C11;
+}
+#save_button{
+    font-family: "Jacquard 12";
+    padding:10px 20px;
+    font-size: xx-large;
+    color: rgba(255, 255, 255, 0.411);
+    background-color: #070C11;
+}
+.botaozin{
+    font-family: "Jacquard 12";
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #070C11;
+    color: #ffffff69;
+    padding:10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: x-large;
+    transition: background-color 0.3s ease;
 }
