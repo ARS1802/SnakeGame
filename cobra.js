@@ -82,6 +82,12 @@ function output(x,who){
     let i = document.querySelector(who);
     i.innerHTML = x;
 }
+
+function outputPontuacao(x){
+    let i = document.querySelector("#pontuacao");
+    i.innerHTML = x +"/15";
+}
+
 function coordenadaAleatoria(b){
     let r = Math.floor((Math.random() * ALEATORIO_MAXIMO));
     b = r*TAMANHO_PONTO;
@@ -390,27 +396,19 @@ function fimDeJogo() {
 }
 
 SAVE_BUTTON.addEventListener("click",() =>{
-    if(i!=0){
-        i = localStorage.getItem("i");
-        i++;
-    } else {
-        i++;
-    }
-    localStorage.setItem("i",i);
-
-        const Nome = SAVE_INPUT.value;
-        var lista_players = [];
-        lista_players[i] = createPlayer(Nome,runTime,pontos);
-        var ranking = []
-        //ranking = bubbleSort(lista_players,"pontos");
-        localStorage.setItem("ranking", JSON.stringify(ranking));
-        location.reload();
-        get();
-    },{once:true})
+    const Nome = SAVE_INPUT.value;
+    var lista_players = [];
+    lista_players[i] = createPlayer(Nome,runTime,pontos);
+    var ranking = []
+    //ranking = bubbleSort(lista_players,"pontos");
+    localStorage.setItem("ranking", JSON.stringify(ranking));
+    location.reload();
+    get();
+},{once:true})
 
 function cicloDeJogo() {
     if (noJogo) {
-        output(pontos,"#pontuacao");
+        outputPontuacao((pontos)-3);
         verificarComida();
         verificarBomba();
         verificarColisao();
@@ -429,59 +427,181 @@ function pontosParaVidas(){
     }
 }
 
-function colisaoMaca(comida,coordenada_x,coordenada_y){
-    if((x[0] == coordenada_x) && (y[0] == coordenada_y)){
+function verificarComida() {
+    let i = 600;
+    if((x[0]==comida_x.c1)&&(y[0]==comida_y.c1)){
         pontos++;
         pontosParaVidas();
-        delete comida,coordenada_x,coordenada_y;
+        comida_x.c1 = i; comida_y.c1 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c2)&&(y[0]==comida_y.c2)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c2 = i; comida_y.c2 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c3)&&(y[0]==comida_y.c3)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c3 = i; comida_y.c3 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c4)&&(y[0]==comida_y.c4)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c4 = i; comida_y.c4 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c5)&&(y[0]==comida_y.c5)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c5 = i; comida_y.c5 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c6)&&(y[0]==comida_y.c6)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c6 = i; comida_y.c6 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c7)&&(y[0]==comida_y.c7)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c7 = i; comida_y.c7 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c8)&&(y[0]==comida_y.c8)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c8 = i; comida_y.c8 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c9)&&(y[0]==comida_y.c9)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c9 = i; comida_y.c9 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c10)&&(y[0]==comida_y.c10)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c10 = i; comida_y.c10 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c11)&&(y[0]==comida_y.c11)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c11 = i; comida_y.c11 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c12)&&(y[0]==comida_y.c12)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c12 = i; comida_y.c12 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c13)&&(y[0]==comida_y.c13)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c13 = i; comida_y.c13 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c14)&&(y[0]==comida_y.c14)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c14 = i; comida_y.c14 = i;
+        comilanca.play();
+    }
+    if((x[0]==comida_x.c15)&&(y[0]==comida_y.c15)){
+        pontos++;
+        pontosParaVidas();
+        comida_x.c15 = i; comida_y.c15 = i;
         comilanca.play();
     }
 }
-
-function verificarComida() {
-    colisaoMaca(comida.c1,comida_x.c1,comida_y.c1);
-    colisaoMaca(comida.c2,comida_x.c2,comida_y.c2);
-    colisaoMaca(comida.c3,comida_x.c3,comida_y.c3);
-    colisaoMaca(comida.c4,comida_x.c4,comida_y.c4);
-    colisaoMaca(comida.c5,comida_x.c5,comida_y.c5);
-    colisaoMaca(comida.c6,comida_x.c6,comida_y.c6);
-    colisaoMaca(comida.c7,comida_x.c7,comida_y.c7);
-    colisaoMaca(comida.c8,comida_x.c8,comida_y.c8);
-    colisaoMaca(comida.c9,comida_x.c9,comida_y.c9);
-    colisaoMaca(comida.c10,comida_x.c10,comida_y.c10);
-    colisaoMaca(comida.c11,comida_x.c11,comida_y.c11);
-    colisaoMaca(comida.c12,comida_x.c12,comida_y.c12);
-    colisaoMaca(comida.c13,comida_x.c13,comida_y.c13);
-    colisaoMaca(comida.c14,comida_x.c14,comida_y.c14);
-    colisaoMaca(comida.c15,comida_x.c15,comida_y.c15);
-}
 //
 // ---------------------------- FUNÇÕES BOMBA --------------------
-function colisaoBomba(bomba,coordenada_x,coordenada_y){
-    if((x[0]==coordenada_x)&&(y[0]==coordenada_y)){
-        pontos--;
-        vidas--;
-        delete bomba,coordenada_x,coordenada_y;
-        explosao.play();
-    }
-}
 
 function verificarBomba() {
-    colisaoBomba(bomba.b1,bomba_x.b1,bomba_y.b1);
-    colisaoBomba(bomba.b2,bomba_x.b2,bomba_y.b2);
-    colisaoBomba(bomba.b3,bomba_x.b3,bomba_y.b3);
-    colisaoBomba(bomba.b4,bomba_x.b4,bomba_y.b4);
-    colisaoBomba(bomba.b5,bomba_x.b5,bomba_y.b5);
-    colisaoBomba(bomba.b6,bomba_x.b7,bomba_y.b7);
-    colisaoBomba(bomba.b8,bomba_x.b8,bomba_y.b8);
-    colisaoBomba(bomba.b9,bomba_x.b9,bomba_y.b9);
-    colisaoBomba(bomba.b10,bomba_x.b10,bomba_y.b10); 
+    let i = 600;
+    if((x[0]==bomba_x.b1)&&(y[0]==bomba_y.b1)){
+        pontos--;
+        vidas--;
+        bomba_x.b1 = i;
+        bomba_y.b1 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b2)&&(y[0]==bomba_y.b2)){
+        pontos--;
+        vidas--;
+        bomba_x.b2 = i;
+        bomba_y.b2 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b3)&&(y[0]==bomba_y.b3)){
+        pontos--;
+        vidas--;
+        bomba_x.b3 = i;
+        bomba_y.b3 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b4)&&(y[0]==bomba_y.b4)){
+        pontos--;
+        vidas--;
+        bomba_x.b4 = i;
+        bomba_y.b4 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b5)&&(y[0]==bomba_y.b5)){
+        pontos--;
+        vidas--;
+        bomba_x.b5 = i;
+        bomba_y.b5 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b6)&&(y[0]==bomba_y.b6)){
+        pontos--;
+        vidas--;
+        bomba_x.b6 = i;
+        bomba_y.b6 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b7)&&(y[0]==bomba_y.b7)){
+        pontos--;
+        vidas--;
+        bomba_x.b7 = i;
+        bomba_y.b7 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b8)&&(y[0]==bomba_y.b8)){
+        pontos--;
+        vidas--;
+        bomba_x.b8 = i;
+        bomba_y.b8 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b9)&&(y[0]==bomba_y.b9)){
+        pontos--;
+        vidas--;
+        bomba_x.b9 = i;
+        bomba_y.b9 = i;
+        explosao.play();
+    }
+    if((x[0]==bomba_x.b10)&&(y[0]==bomba_y.b10)){
+        pontos--;
+        vidas--;
+        bomba_x.b10 = i;
+        bomba_y.b10 = i;
+        explosao.play();
+    }
 } 
 //
 // ----------------------- FUNÇÕES GAMEPLAY -----------------
 function verificarColisao() {
     for (var z = pontos; z > 0; z--) {
-        if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
+        if ((z > 1) && (x[0] == x[z]) && (y[0] == y[z])) {
+            vidas--;
             noJogo = false;
         }
     }
@@ -493,22 +613,6 @@ function verificarColisao() {
     if((pontos==0)&&(vidas!=0)){
         pontos=1;
         vidas--;
-    }
-
-    if (y[0] >= C_ALTURA) {
-        y[0] = 0;
-    }
-
-    if (y[0] < 0) {
-       y[0] = C_ALTURA;
-    }
-
-    if (x[0] >= C_LARGURA) {
-      x[0] = 0;
-    }
-
-    if (x[0] < 0) {
-      x[0] = C_LARGURA;
     }
 }
 
@@ -533,6 +637,22 @@ function mover() {
 
     if (paraBaixo) {
         y[0] += TAMANHO_PONTO;
+    }
+
+    if (y[0] >= C_ALTURA) {
+        y[0] = 0;
+    }
+
+    if (y[0] < 0) {
+       y[0] = C_ALTURA;
+    }
+
+    if (x[0] >= C_LARGURA) {
+      x[0] = 0;
+    }
+
+    if (x[0] < 0) {
+      x[0] = C_LARGURA;
     }
 }    
 
