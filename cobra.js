@@ -14,9 +14,16 @@ const SAVE_INPUT = document.getElementById("player_name");
 const SAVE_BUTTON = document.getElementById("save_button");
 //  AUDIO
 const morte = new Audio("SOUNDS/SpongeBob sad music.mp3");
-const comilanca = new Audio("SOUNDS/Munch-sound-effect.mp3");
+
+morte.volume = 0.2;
+const comilanca = new Audio("SOUNDS/Munch.mp3");
+comilanca.volume = 0.75
 const explosao = new Audio("SOUNDS/Explosion.mp3");
 explosao.volume = 0.12;
+const musica_fundo = new Audio("SOUNDS/Ruins.mp3");
+musica_fundo.volume = 0.5;
+musica_fundo.loop = true;
+
 //  ELEMENTOS DO CANVAS
 const bomba = {
     b1:0,b2:0,b3:0,b4:0,b5:0,b6:0,b7:0,b8:0,b9:0,b10:0
@@ -155,6 +162,7 @@ function iniciar() {
     PONTUACAO.hidden = false;
 
     carregarImagens();
+    musica_fundo.play();
     criarCobra();
     localizarBomba();
     localizarMaca();
@@ -327,6 +335,9 @@ function fimDeJogo() {
     ctx.textAlign = "center"; 
     ctx.font = "normal bold 80px Jacquard";
     ctx.fillText("Fim de Jogo", C_LARGURA/2, C_ALTURA/2);
+    musica_fundo.pause();
+    musica_fundo.currentTime = 0;
+
     morte.play();
     morte.volume = 0.2;
     
@@ -661,7 +672,6 @@ function mover() {
       x[0] = C_LARGURA;
     }
 }    
-
 
 function verificarTecla(e) {
     var tecla = e.keyCode;

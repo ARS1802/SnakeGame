@@ -5,7 +5,8 @@
 }
 
 body {
-    background-color: #191919;
+    background-image: url(site-background.png);
+    background-size: auto;
     display: flex;
     min-height: 100vh;
     align-items: center;
@@ -47,10 +48,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    margin: 0 auto;
 }
 
 #ranking{
-    margin-left: 90px;
+    margin-left: 180px;
 }
 
 #ranking_list li{
@@ -78,30 +80,20 @@ body {
 .quinto_lugar{
     font-size: 30px;
 }
-#player_name{
-    font-size: xx-large;
-    color:aliceblue;
-    background-color: #070C11;
-}
-#save_button{
-    font-family: "Jacquard 12";
-    padding:10px 20px;
-    font-size: xx-large;
-    color: rgba(255, 255, 255, 0.411);
-    background-color: #070C11;
-}
 .botaozin{
-    font-family: "Jacquard 12";
     position: absolute;
     top: 50%;
     width: 50%;
     transform: translate(-50%, -50%);
-    background-color: #070C11;
-    color: #ffffff69;
+    background-color: darkred;
+    color: white;
     padding:10px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: x-large;
+    font-size: x-small;
     transition: background-color 0.3s ease;
+}
+.botaozin:hover{
+    background-color: rgb(220, 19, 4);
 }
