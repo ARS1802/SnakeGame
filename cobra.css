@@ -13,10 +13,10 @@ body {
     flex-direction: column;
     color: #C0C0C0;
     overflow: hidden;
-    background-image: url('IMAGES/site_background.png'); /* Replace with your image path */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-size: cover; /* Ensures the image covers the entire area */
+    background-image: url('IMAGES/site_background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: "Jacquard 12", system-ui;
     font-weight: 400;
     font-style: normal;
@@ -34,6 +34,9 @@ body {
 }
 #vidas{
     color: rgb(255, 0, 93);
+}
+#debug{
+    color: aliceblue;
 }
 #title{
     color: #ffffff69;
