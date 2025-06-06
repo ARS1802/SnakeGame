@@ -14,16 +14,36 @@ body {
     flex-direction: column;
     color: #C0C0C0;
     overflow: hidden;
+    background-image: url('IMAGES/site_background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Jacquard 12", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #tela{
     display: block;
     margin: 0;
 }
-
+#output{
+    color: white;
+}
+#pontucao{
+    font-size: xx-large;
+}
+#vidas{
+    color: rgb(255, 0, 93);
+}
+#debug{
+    color: aliceblue;
+}
+#title{
+    color: #ffffff69;
+    font-size: xx-large;
+}
 .container {
-    height: 600px;
-    width: 600px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -35,26 +55,29 @@ body {
     margin-left: 180px;
 }
 
-#primeiro_lugar{
-    background-color: gold;
-    color: black;
+#ranking_list li{
+    padding-bottom: 20px;
+}
+
+.primeiro_lugar{
+    color: gold;
     font-size: 50px;
 }
 
-#segundo_lugar{
+.segundo_lugar{
     color: #808080;
     font-size: 30px;
 }
 
-#terceiro_lugar{
+.terceiro_lugar{
     color: #B87333;
     font-size: 30px;
 }
 
-#quarto_lugar{
+.quarto_lugar{
     font-size: 30px;
 }
-#quinto_lugar{
+.quinto_lugar{
     font-size: 30px;
 }
 .botaozin{
@@ -74,5 +97,3 @@ body {
 .botaozin:hover{
     background-color: rgb(220, 19, 4);
 }
-
-

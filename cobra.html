@@ -7,24 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="cobra.css">
     <title>Snake Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Stalinist+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <h1 id = "output">The Most Abominous Snake Game of All Time</h1>
-    <h2 id = "vidas" style="color: rgb(255, 0, 93)"></h2>
-    <h1 id = "debug" style="color:blue"></h1>
+<body onload="get()">
+    <h1 id = "title">Snake Game</h1>
+    <h1 id = "pontuacao">Snake Game</h1>
+    <h2 id="vidas"></h2>
+    <h1 id="debug"></h1>
     <div class="container">
         <canvas id="tela" height="600" width = "600"></canvas>
             <button class="botaozin">Iniciar Jogo</button>
         <div id = "ranking">
         <ol id = "ranking_list">
-            <li id = "primeiro_lugar">primeiro_lugar</li>
-            <li id = "segundo_lugar">segundo_lugar</li>
-            <li id = "terceiro_lugar">terceiro_lugar</li>
-            <li id = "quarto_lugar">quarto_lugar</li>
-            <li id = "quinto_lugar">quinto_lugar</li>
+            <li class = "primeiro_lugar">primeiro lugar</li>
+            <li class = "segundo_lugar">segundo lugar</li>
+            <li class = "terceiro_lugar">terceiro lugar</li>
+            <li class = "quarto_lugar">quarto lugar</li>
+            <li class = "quinto_lugar">quinto lugar</li>
         </ol>
-    </div>
+        <input type="text" id="player_name"/>
+        <button id="save_button">save</button>
+        </div>
     </div>
     <script src="cobra.js"></script>
 </body>
