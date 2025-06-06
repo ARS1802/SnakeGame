@@ -14,16 +14,23 @@ const SAVE_INPUT = document.getElementById("player_name");
 const SAVE_BUTTON = document.getElementById("save_button");
 //  AUDIO
 const morte = new Audio("SOUNDS/SpongeBob sad music.mp3");
-
 morte.volume = 0.2;
+
 const comilanca = new Audio("SOUNDS/Munch.mp3");
-comilanca.volume = 0.75
+comilanca.volume = 0.75;
+
 const explosao = new Audio("SOUNDS/Explosion.mp3");
 explosao.volume = 0.12;
+
 const musica_fundo = new Audio("SOUNDS/Ruins.mp3");
 musica_fundo.volume = 0.5;
 musica_fundo.loop = true;
 
+const buzina = new Audio("SOUNDS/Party Horn.mp3");
+buzina.volume = 0.5;
+
+const vitoria = new Audio("SOUNDS/Children.mp3")
+vitoria.volume = 0.3;
 //  ELEMENTOS DO CANVAS
 const bomba = {
     b1:0,b2:0,b3:0,b4:0,b5:0,b6:0,b7:0,b8:0,b9:0,b10:0
@@ -135,7 +142,7 @@ var noJogo = true;
 const TAMANHO_PONTO = 20;
 const ALEATORIO_MAXIMO = 29;
 const ATRASO = 120;
-const ATRASO_INPUT = 10;
+const ATRASO_INPUT = 10; // OBSOLETO (?)
 const C_ALTURA = 600;
 const C_LARGURA = 600;    
 
@@ -333,22 +340,36 @@ function fazerDesenho() {
 }
 
 function fimDeJogo() {
+if(vidas > 0 && partes > 0){
+    vitoria.play();
+    buzina.play();
+    musica_fundo.pause();
+    musica_fundo.currentTime = 0;
+    TITLE.hidden = false;
+    SAVE_INPUT.hidden = false;
+    SAVE_BUTTON.hidden = false;
     ctx.fillStyle = "#ffffff69";
     ctx.textBaseline = "middle"; 
     ctx.textAlign = "center"; 
     ctx.font = "normal bold 80px Jacquard";
-    ctx.fillText("Fim de Jogo", C_LARGURA/2, C_ALTURA/2);
-    musica_fundo.pause();
-    musica_fundo.currentTime = 0;
+    ctx.fillText("Você venceu!", C_LARGURA/2, C_ALTURA/2);
+    }else {
+        ctx.fillStyle = "#ffffff69";
+        ctx.textBaseline = "middle"; 
+        ctx.textAlign = "center"; 
+        ctx.font = "normal bold 80px Jacquard";
+        ctx.fillText("Fim de Jogo", C_LARGURA/2, C_ALTURA/2);
+        musica_fundo.pause();
+        musica_fundo.currentTime = 0;
 
-    morte.play();
-    morte.volume = 0.2;
+        morte.play();
+        morte.volume = 0.2;
     
-    TITLE.hidden = false;
-    SAVE_INPUT.hidden = false;
-    SAVE_BUTTON.hidden = false;
+        TITLE.hidden = false;
+        SAVE_INPUT.hidden = false;
+        SAVE_BUTTON.hidden = false;
+    }
 }
-
 SAVE_BUTTON.addEventListener("click",() =>{
     const Nome = SAVE_INPUT.value;
     var lista_players = [];
