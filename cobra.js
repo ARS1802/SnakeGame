@@ -12,6 +12,8 @@ PONTUACAO.hidden = true;
 const START = document.querySelector(".botaozin");
 const SAVE_INPUT = document.getElementById("player_name");
 const SAVE_BUTTON = document.getElementById("save_button");
+const TIME = document.getElementById("timer");
+TIME.hidden = true;
 //  AUDIO
 const morte = new Audio("SOUNDS/SpongeBob sad music.mp3");
 morte.volume = 0.2;
@@ -127,6 +129,8 @@ var partes
 
 var background;
 
+var timer;
+var contador;
 var runTime;
 var pontos;
 var vidas = 5;
@@ -168,14 +172,18 @@ function iniciar() {
     tela = document.getElementById("tela");
     ctx = tela.getContext("2d");
     runTime = 0;
+    timer = 30;
     PONTUACAO.hidden = false;
 
     carregarImagens();
+    musica_fundo.currentTime = 0;
     musica_fundo.play();
     criarCobra();
     localizarBomba();
     localizarMaca();
+    relogio();
     setTimeout("cicloDeJogo()", ATRASO);
+    setTimeout("derrotaTempo()", 30000)
 }
 
 function carregarImagens() {
@@ -340,7 +348,8 @@ function fazerDesenho() {
 }
 
 function fimDeJogo() {
-if(vidas > 0 && partes > 0){
+if(vidas > 0 && partes > 0 && timer > 0){
+    clearInterval(contador);
     vitoria.play();
     buzina.play();
     musica_fundo.pause();
@@ -390,11 +399,22 @@ function cicloDeJogo() {
         mover();
         fazerDesenho();
         setTimeout("cicloDeJogo()", ATRASO);
-        runTime +=10;
         output(vidas,"#vidas");
-        output(runTime,"#debug");
+        output(timer,"#debug");
     }
 }
+
+function relogio(){
+        contador = setInterval(() => {
+        timer--;
+    }, 1000);
+}
+
+function derrotaTempo() {
+    clearInterval(contador)
+    vidas = 0;    
+    }    
+
 // ---------------------------- FUNÇÕES COMIDA --------------------
 function pontosParaVidas(){
     if(pontos%3==0){
